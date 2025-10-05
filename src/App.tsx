@@ -18,7 +18,7 @@ const App = () => {
   useEffect(() => {
     const fetchNotes = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/notes")
+        const response = await fetch("https://nimbus-backend-two.vercel.app/api/notes")
         const notes: Note[] = await response.json()
         setNotes(notes)
       } catch (err) {
@@ -39,7 +39,7 @@ const App = () => {
     event.preventDefault()
 
     try {
-      const response = await fetch("http://localhost:5000/api/notes", {
+      const response = await fetch("https://nimbus-backend-two.vercel.app/api/notes", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({title, content})
@@ -69,7 +69,7 @@ const App = () => {
     }
 
     try {
-      const response = await fetch(`http://localhost:5000/api/notes/${selectedNote.id}`, {
+      const response = await fetch(`https://nimbus-backend-two.vercel.app/api/notes/${selectedNote.id}`, {
         method: 'PUT',
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({
@@ -102,7 +102,7 @@ const App = () => {
     event.stopPropagation()
 
     try {
-      await fetch(`http://localhost:5000/api/notes/${noteId}`, { 
+      await fetch(`https://nimbus-backend-two.vercel.app/api/notes/${noteId}`, { 
         method: "DELETE"
       })
       const updatedNotes = notes.filter((note) => note.id !== noteId)
@@ -125,7 +125,7 @@ const App = () => {
   const confirmDelete = async () => {
     if (noteToDelete == null) return
     try {
-      await fetch(`http://localhost:5000/api/notes/${noteToDelete}`, { method: "DELETE" })
+      await fetch(`https://nimbus-backend-two.vercel.app/api/notes/${noteToDelete}`, { method: "DELETE" })
       setNotes((prev) => prev.filter((n) => n.id !== noteToDelete))
     } catch (err) {
       console.error(err)
