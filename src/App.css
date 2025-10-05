@@ -1,38 +1,155 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Caprasimo&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+body {
+  margin: 20px;
+  background-color: rgb(19, 19, 19);
+  font-family: "Montserrat", sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app-container {
+  grid-template-columns: 1fr;
+  font-family: "Montserrat", sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@media (min-width: 600px) {
+  .app-container {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 20px;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(250px, 1fr)
+  );
+  grid-auto-rows: minmax(250px auto);
+  gap: 20px
+}
+
+.note-item {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  border: 1px solid #2b2b2b;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 5px;
+  background-color: #ffd35b;
+  box-shadow: 0px 0px 0px rgba(183, 183, 183, 0.1);
+  cursor: pointer;
+}
+
+.notes-header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.notes-header button {
+  font-size: 16px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  max-width: fit-content;
+}
+
+h2 {
+  margin: 0
+}
+
+.note-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+textarea, input {
+  border-radius: 5px;
+  padding: 10px;
+  border: 1px solid rgb(52, 52, 52);
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  background-color: #343434;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+textarea {
+  resize: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.note-form button {
+  border-radius: 5px;
+  padding: 12px;
+  border: none;
+  color: black;
+  font-family: "Montserrat", sans-serif;
+  background-color: #00e536;
+  transition: background-color 0.1s ease-in-out;
+}
+
+.note-form button:hover {
+  background-color: #7eff9c;
+  color: black;
+  cursor: pointer;
+}
+
+.edit-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 5px;
+}
+
+.edit-buttons button {
+  flex: 1;
+}
+
+.edit-buttons button:last-of-type {
+  background-color: red;
+  color: black;
+}
+
+/* Modal styles */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.5);
+  z-index: 1000;
+}
+
+.modal {
+  background: #343434;
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  min-width: 280px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.delete-yes {
+  padding: 10px 15px;
+  border-radius: 5px;
+  background-color: #00e536;
+  border-width: 0rem;
+  font-family: "Montserrat", sans-serif;
+}
+
+.delete-no {
+  padding: 10px 15px;
+  border-radius: 5px;
+  background-color: red;
+  border-width: 0rem;
+  font-family: "Montserrat", sans-serif;
 }
